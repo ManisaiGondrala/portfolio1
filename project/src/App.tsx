@@ -35,7 +35,7 @@ function App() {
     }`}>
       <div className="fixed inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-teal-600/5 pointer-events-none"></div>
       
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header/>
       
       <main className="relative z-10">
         <Hero />
