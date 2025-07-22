@@ -1,11 +1,10 @@
 import React from 'react';
 import { Download } from 'lucide-react';
-import { ResumePDF } from '../assets/assets'; // adjust path if needed
 
 const Header: React.FC = () => {
   const downloadResume = () => {
     const link = document.createElement('a');
-    link.href = ResumePDF;
+    link.href = '/Gondrala_Mani_Sai_Resume.pdf';
     link.download = 'Gondrala_Mani_Sai_Resume.pdf';
     link.click();
   };
