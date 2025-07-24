@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code, Database, Globe, Cloud, Wrench, Brain, Users, Clock } from 'lucide-react';
+import { hackerrank_logo, leetcode_logo} from '../assets/assets';
 
 const Skills: React.FC = () => {
   const skillCategories = [
@@ -54,7 +55,7 @@ const Skills: React.FC = () => {
             My technical and soft skills that drive successful project delivery
           </p>
         </div>
-        
+
         {/* Technical Skills */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {skillCategories.map((category, index) => (
@@ -65,11 +66,11 @@ const Skills: React.FC = () => {
               <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center mb-4`}>
                 <category.icon className="text-white" size={24} />
               </div>
-              
+
               <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-200">
                 {category.title}
               </h3>
-              
+
               <div className="space-y-2">
                 {category.skills.map((skill, skillIndex) => (
                   <div
@@ -83,7 +84,7 @@ const Skills: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         {/* Core Skills with Progress */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
@@ -114,7 +115,7 @@ const Skills: React.FC = () => {
             ))}
           </div>
         </div>
-        
+
         {/* Soft Skills */}
         <div>
           <h3 className="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
@@ -132,6 +133,50 @@ const Skills: React.FC = () => {
                 </span>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Coding Profiles / Achievements */}
+        <div className="mt-20">
+          <h3 className="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">
+            Coding Profiles & Achievements
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* HackerRank */}
+            <a
+              href="https://www.hackerrank.com/ManisaiGondrala"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 hover:bg-white/20 dark:hover:bg-gray-700/20 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2"
+            >
+              <img
+                src={hackerrank_logo}
+                alt="HackerRank Badge"
+                className="w-24 h-24 mb-4 rounded-full border-4 border-green-400 shadow-md"
+              />
+              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">HackerRank</h4>
+              <p className="text-sm text-green-600 dark:text-green-400 font-bold mt-1 text-center">
+                5⭐ Java | 5⭐ Problem Solving
+              </p>
+            </a>
+
+            {/* LeetCode */}
+            <a
+              href="https://leetcode.com/ManisaiGondrala/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 hover:bg-white/20 dark:hover:bg-gray-700/20 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2"
+            >
+              <img
+                src={leetcode_logo}
+                alt="LeetCode Logo"
+                className="w-24 h-24 mb-4 rounded-full border-4 border-yellow-400 shadow-md"
+              />
+              <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">LeetCode</h4>
+              <p className="text-sm text-yellow-600 dark:text-yellow-400 font-bold mt-1 text-center">
+                250+ Problems Solved | Daily Streak Champion
+              </p>
+            </a>
           </div>
         </div>
       </div>
