@@ -144,7 +144,7 @@ const Skills: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* HackerRank */}
             <a
-              href="https://www.hackerrank.com/ManisaiGondrala"
+              href="https://www.hackerrank.com/profile/mani31545"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 hover:bg-white/20 dark:hover:bg-gray-700/20 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2"
@@ -156,13 +156,13 @@ const Skills: React.FC = () => {
               />
               <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">HackerRank</h4>
               <p className="text-sm text-green-600 dark:text-green-400 font-bold mt-1 text-center">
-                5⭐ Java | 5⭐ Problem Solving
+                3⭐ Problem Solving | 5⭐ Python
               </p>
             </a>
 
             {/* LeetCode */}
             <a
-              href="https://leetcode.com/ManisaiGondrala/"
+              href="https://leetcode.com/u/mani31545/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 hover:bg-white/20 dark:hover:bg-gray-700/20 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2"
@@ -174,7 +174,7 @@ const Skills: React.FC = () => {
               />
               <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">LeetCode</h4>
               <p className="text-sm text-yellow-600 dark:text-yellow-400 font-bold mt-1 text-center">
-                250+ Problems Solved | Daily Streak Champion
+                150+ Problems Solved 
               </p>
             </a>
           </div>
