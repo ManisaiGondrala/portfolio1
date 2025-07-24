@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Github, Calendar, Code } from 'lucide-react';
+import { ExternalLink, Calendar, Code } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projects = [

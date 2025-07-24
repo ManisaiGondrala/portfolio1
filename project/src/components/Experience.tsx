@@ -1,6 +1,5 @@
 import React from 'react';
 import { Calendar, Award, BookOpen, ExternalLink } from 'lucide-react';
-import { Navigation, } from 'lucide-react';
 const Experience: React.FC = () => {
   const education = [
     {
