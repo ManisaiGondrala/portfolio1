@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, Award, BookOpen, ExternalLink } from 'lucide-react';
-
+import { Navigation, } from 'lucide-react';
 const Experience: React.FC = () => {
   const education = [
     {
@@ -19,6 +19,15 @@ const Experience: React.FC = () => {
       period: 'Jun 2019 - May 2021',
       gpa: '896',
       coursework: ['MPC'],
+      gradient: 'from-green-500 to-teal-500'
+    },
+    {
+      degree: '10th',
+      school: 'Winfield High School',
+      location: 'Khammam',
+      period: 'Jun 2018 - May 2019',
+      gpa: '9.7',
+      coursework: ['-'],
       gradient: 'from-green-500 to-teal-500'
     }
   ];
@@ -58,10 +67,11 @@ const Experience: React.FC = () => {
     }
   ];
 
-  const handlePublicationDownload = () => {
-    // This would typically link to the actual publication
-    alert('Publication proceedings would be available through the conference website or digital library.');
-  };
+
+const handlePublicationDownload = () => {
+  window.open("https://www.wcasetgoa.com/45th%20WCASET_%20Proceeding.pdf", "_blank");
+};
+
 
   return (
     <section id="experience" className="py-20 px-4">
@@ -238,13 +248,14 @@ const Experience: React.FC = () => {
                     <span>{pub.date}</span>
                   </div>
                   
-                  <button
+                  <button 
                     onClick={handlePublicationDownload}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                   >
                     <ExternalLink size={16} />
                     View Proceedings
                   </button>
+
                 </div>
               </div>
             </div>
