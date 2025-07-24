@@ -185,6 +185,50 @@ const handlePublicationDownload = () => {
           ))}
         </div>
         
+        {/* Languages & Interests */}
+<div className="mb-16">
+  <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
+    Languages & Interests
+  </h3>
+
+  <div className="grid md:grid-cols-2 gap-12">
+    {/* Languages */}
+    <div>
+      <h4 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Languages</h4>
+      <div className="space-y-3">
+        {[
+          { name: 'English', level: 'Fluent' },
+          { name: 'Telugu', level: 'Native' },
+          { name: 'Hindi', level: 'Basic proficiency' }
+        ].map((lang, index) => (
+          <div key={index} className="flex items-center justify-between p-3 rounded-lg backdrop-blur-md bg-white/10 dark:bg-gray-800/10">
+            <span className="font-medium text-gray-800 dark:text-gray-200">{lang.name}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">{lang.level}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Interests */}
+    <div>
+      <h4 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Interests</h4>
+      <div className="flex flex-wrap gap-3">
+        {['Photography', 'Traveling'].map((interest, index) => (
+          <span
+            key={index}
+            className="px-4 py-2 rounded-full bg-gradient-to-r from-teal-100 to-blue-100 dark:from-teal-900/30 dark:to-blue-900/30 text-teal-700 dark:text-teal-300 text-sm font-medium"
+          >
+            {interest}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
         {/* Certifications */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
