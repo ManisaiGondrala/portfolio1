@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,7 +11,13 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -18,8 +26,28 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:manisaigondrala94@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
+
+    setLoading(true);
+    setError('');
+    setSent(false);
+
+    emailjs
+      .sendForm(
+        'service_wmqdru3',        // ✅ Service ID
+        'template_i8ohm95',       // ✅ Template ID
+        formRef.current!,
+        'IRy2D18smghkkMqWu'       // ✅ Public Key
+      )
+      .then(() => {
+        setLoading(false);
+        setSent(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError('Something went wrong. Please try again later.');
+        console.error('EmailJS Error:', err);
+      });
   };
 
   const contactInfo = [
@@ -83,7 +111,8 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div>
             <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-gray-200">Send a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+
+            <form onSubmit={handleSubmit} ref={formRef} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
@@ -94,7 +123,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border border-white/30 dark:border-gray-700/30 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-800/20 border focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100"
                     placeholder="Your Name"
                   />
                 </div>
@@ -107,7 +136,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border border-white/30 dark:border-gray-700/30 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-800/20 border focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -121,7 +150,7 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border border-white/30 dark:border-gray-700/30 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                  className="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-800/20 border focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100"
                   placeholder="Subject"
                 />
               </div>
@@ -134,16 +163,28 @@ const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 rounded-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border border-white/30 dark:border-gray-700/30 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-800/20 border focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-gray-100 resize-none"
                   placeholder="Your message..."
                 />
               </div>
+
+              {sent && (
+                <p className="text-green-500 font-medium">Message sent successfully! ✅</p>
+              )}
+              {error && (
+                <p className="text-red-500 font-medium">{error}</p>
+              )}
+
               <button
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                <Send size={20} />
-                Send Message
+                {loading ? 'Sending...' : (
+                  <>
+                    <Send size={20} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
