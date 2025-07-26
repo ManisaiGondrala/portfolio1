@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Award, BookOpen, ExternalLink } from 'lucide-react';
+import { paper1 } from '../assets/assets';
 const Experience: React.FC = () => {
   const education = [
     {
@@ -72,6 +73,12 @@ const handlePublicationDownload = () => {
   window.open("https://www.wcasetgoa.com/45th%20WCASET_%20Proceeding.pdf", "_blank");
 };
 
+const downloadpaper1 = () => {
+    const link = document.createElement('a');
+    link.href = paper1;
+    link.download = '';
+    link.click();
+  };
 
   return (
     <section id="experience" className="py-20 px-4">
@@ -270,47 +277,64 @@ const handlePublicationDownload = () => {
         </div>
         
         {/* Publications */}
-        <div>
-          <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
-            Publications
-          </h3>
-          {publications.map((pub, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 shadow-lg"
-            >
-              <div className="h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-6"></div>
-              
-              <div className="flex items-start gap-3 mb-4">
-                <BookOpen className="text-purple-500 flex-shrink-0 mt-1" size={24} />
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">
-                    {pub.title}
-                  </h4>
-                  
-                  <p className="text-gray-700 dark:text-gray-300 mb-2">
-                    {pub.conference}
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    <span>Publisher: {pub.publisher}</span>
-                    <span>ISBN: {pub.isbn}</span>
-                    <span>{pub.date}</span>
-                  </div>
-                  
-                  <button 
-                    onClick={handlePublicationDownload}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                  >
-                    <ExternalLink size={16} />
-                    View Proceedings
-                  </button>
+       <div>
+  <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
+    📚 Publications
+  </h3>
 
-                </div>
-              </div>
-            </div>
-          ))}
+  {publications.map((pub, index) => (
+    <div
+      key={index}
+      className="p-6 sm:p-8 mb-10 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 shadow-xl hover:shadow-2xl transition-all duration-300"
+    >
+      {/* Decorative Bar */}
+      <div className="h-1 w-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-6"></div>
+
+      {/* Main Content */}
+      <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+        <div className="flex-shrink-0">
+          <BookOpen className="text-purple-500" size={28} />
         </div>
+
+        <div className="flex-1">
+          <h4 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+            {pub.title}
+          </h4>
+
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-2">
+            {pub.conference}
+          </p>
+
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <span><strong>Publisher:</strong> {pub.publisher}</span>
+            <span><strong>ISBN:</strong> {pub.isbn}</span>
+            <span><strong>Date:</strong> {pub.date}</span>
+          </div>
+
+          {/* Buttons Row */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={handlePublicationDownload}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              <ExternalLink size={16} />
+              View Proceedings
+            </button>
+
+            <button
+              onClick={downloadpaper1}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              <ExternalLink size={16} />
+              View Paper
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
     </section>
   );
