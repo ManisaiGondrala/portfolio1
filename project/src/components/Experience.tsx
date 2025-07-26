@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Award, BookOpen, ExternalLink } from 'lucide-react';
-import { paper1 } from '../assets/assets';
+import { paper1, megha_logo,  photo2, photo3, group_photo, photo1 } from '../assets/assets';
+
 const Experience: React.FC = () => {
   const education = [
     {
@@ -58,15 +59,23 @@ const Experience: React.FC = () => {
   ];
 
   const volunteerExperience = [
-    {
-      role: 'Core Member',
-      organization: 'Megha Club',
-      period: 'Jun 2023 - Jun 2024',
-      description: 'Megha Club is a student-led technical club promoting emerging tech knowledge through events. As a core member, I prepare presentation content, handle event documentation, research topics, design visuals, and coordinate with the team to ensure smooth session execution.',
-      skills: ['Team Work', 'AWS Cloud'],
-      url: "https://megha21.netlify.app/",
-    }
-  ];
+  {
+    role: 'Core Member',
+    organization: 'Megha Club',
+    period: 'Jun 2023 - Jun 2024',
+    description:
+      'Megha Club is a student-led technical club promoting emerging tech knowledge through events. As a core member, I prepare presentation content, handle event documentation, research topics, design visuals, and coordinate with the team to ensure smooth session execution.',
+    skills: ['Team Work', 'AWS Cloud'],
+    url: 'https://megha21.netlify.app/',
+    images: [
+      megha_logo,
+      group_photo,
+      
+      photo1,
+      photo3
+    ]
+  }
+];
 
 
 const handlePublicationDownload = () => {
@@ -148,54 +157,78 @@ const downloadpaper1 = () => {
         
         {/* Volunteer Experience */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
-            Volunteer Experience
-          </h3>
-          {volunteerExperience.map((exp, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 shadow-lg"
-            >
-              <div className="h-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mb-6"></div>
-              
-              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-                <div>
-                  <h4 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-1">
-                    {exp.role}
-                  </h4>
-                  <h5 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    {exp.organization}
-                  </h5>
-                </div>
-                <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                  <Calendar size={16} />
-                  <span>{exp.period}</span>
-                </div>
-              </div>
-              
-              <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                {exp.description}
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-    
-                <a href={exp.url} className="text-l font-medium text-blue-600 dark:text-blue-400" target="_blank">
-                  {"click here for more detail  -->"}
-                </a>
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                {exp.skills.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="px-3 py-1 text-xs bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 text-green-700 dark:text-green-300 rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+      <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
+        Volunteer Experience
+      </h3>
+      {volunteerExperience.map((exp, index) => (
+        <div
+          key={index}
+          className="p-6 rounded-2xl backdrop-blur-md bg-white/10 dark:bg-gray-800/10 shadow-lg"
+        >
+          <div className="h-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mb-6"></div>
+
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
+            <div>
+              <h4 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-1">
+                {exp.role}
+              </h4>
+              <h5 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                {exp.organization}
+              </h5>
             </div>
-          ))}
+            <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
+              <Calendar size={16} />
+              <span>{exp.period}</span>
+            </div>
+          </div>
+
+          <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+            {exp.description}
+          </p>
+
+          <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+            <a
+              href={exp.url}
+              className="text-l font-medium text-blue-600 dark:text-blue-400 underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              click here for more detail →
+            </a>
+          </p>
+
+          {/* 📸 Image Gallery */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            {exp.images.map((img, imgIndex) => (
+              <a
+                href={img}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={imgIndex}
+              >
+                <img
+                  src={img}
+                  alt={`Megha Club ${imgIndex + 1}`}
+                  className="rounded-lg object-cover w-full h-36 hover:scale-105 transition-transform duration-300 shadow-md"
+                />
+              </a>
+            ))}
+          </div>
+
+          {/* 🏷️ Skills */}
+          <div className="flex flex-wrap gap-2">
+            {exp.skills.map((skill, skillIndex) => (
+              <span
+                key={skillIndex}
+                className="px-3 py-1 text-xs bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 text-green-700 dark:text-green-300 rounded-full"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
+      ))}
+    </div>
         
         {/* Languages & Interests */}
 <div className="mb-16">
