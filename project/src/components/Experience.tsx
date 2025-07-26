@@ -74,11 +74,9 @@ const handlePublicationDownload = () => {
 };
 
 const downloadpaper1 = () => {
-    const link = document.createElement('a');
-    link.href = paper1;
-    link.download = '';
-    link.click();
-  };
+  window.open(paper1, '_blank');
+};
+
 
   return (
     <section id="experience" className="py-20 px-4">
