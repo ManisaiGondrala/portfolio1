@@ -62,7 +62,8 @@ const Experience: React.FC = () => {
       organization: 'Megha Club',
       period: 'Jun 2023 - Jun 2024',
       description: 'Megha Club is a student-led technical club promoting emerging tech knowledge through events. As a core member, I prepare presentation content, handle event documentation, research topics, design visuals, and coordinate with the team to ensure smooth session execution.',
-      skills: ['Team Work', 'AWS Cloud']
+      skills: ['Team Work', 'AWS Cloud'],
+      url: "https://megha21.netlify.app/",
     }
   ];
 
@@ -169,6 +170,12 @@ const handlePublicationDownload = () => {
               
               <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                 {exp.description}
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+    
+                <a href={exp.url} className="text-l font-medium text-blue-600 dark:text-blue-400" target="_blank">
+                  {"click here for more detail  -->"}
+                </a>
               </p>
               
               <div className="flex flex-wrap gap-2">
